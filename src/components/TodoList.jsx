@@ -37,13 +37,13 @@ export const TodoList = ({todo,colors1,getHoverColors,getActiveColors,colors3,fi
       <Input
         style={{ width: 250 }}
         className={todo.completed ? 'finished' : ''}
-         value={todo.text}//?
-         onChange={e=>setEditText(e.target.value,todo.id)} //?
+         value={}//?
+         onChange={} //?
        />
       {/* редактировать таск */}
       <span>
         <FaEdit 
-        onClick={()=>editTodo(todo.id, todo.editText)} //? 
+        onClick={} //? 
         style={{ margin: '0px 10px', cursor: 'pointer' }} />
       </span>
 
