@@ -34,17 +34,22 @@ function App() {
     const deleted = [...todos].filter((el) => el.id !== id);
     setTodos(deleted);
   };
-  
-  const editTodo = (id) =>
-    setTodos((el) => (el.id === id ? { ...el, isEdit: !el.isEdit } : el));
-  const updateTodo = (text, id) =>
-    setTodos(
-      todos.map((el) =>
-        el.id === id && text.trim()
-          ? { ...el, text: text, isEdit: !el.isEdit }
-          : el
-      )
+
+  const editTodo = (id) => {
+    const edited = [...todos].map((item) =>
+      item.id === id ? { ...item, isEdit: !item.isEdit } : item
     );
+    setTodos(edited);
+    console.log(edited);
+  };
+
+  const updateTodo = (id,text)=>{
+    const updated = [...todos].map(item=>item.id === id ?{...item, isEdit: !item.isEdit, text:text}:item)
+    setTodos(updated)
+    console.log(updated);
+    
+  }
+
   // const editTodo = (text, id) => {
   //   const edit = [...todos].map((el) =>
   //     el.id === id ? { ...el, text: text } : el
