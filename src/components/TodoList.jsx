@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Button, ConfigProvider, Input } from 'antd';
 import { FaEdit } from 'react-icons/fa';
 
-export const TodoList = ({todo,colors1,getHoverColors,getActiveColors,colors3,finishedTodo,editTodo, deleteTodo,text}) => {
-  const [editText, setEditText] = useState(text)
+export const TodoList = ({todo,colors1,getHoverColors,getActiveColors,colors3,finishedTodo,editTodo, deleteTodo,text,updateTodo}) => {
+  
+const [updateText, setUpdateText] = useState(text)
+
   
   return (
     <>
@@ -37,13 +39,13 @@ export const TodoList = ({todo,colors1,getHoverColors,getActiveColors,colors3,fi
       <Input
         style={{ width: 250 }}
         className={todo.completed ? 'finished' : ''}
-         value={}//?
-         onChange={} //?
+        value={todo.updateText}
+        onChange={(e) =>setUpdateText(e.target.value)}
        />
       {/* редактировать таск */}
       <span>
         <FaEdit 
-        onClick={} //? 
+        onClick={()=>updateTodo(id,updateText)}
         style={{ margin: '0px 10px', cursor: 'pointer' }} />
       </span>
 

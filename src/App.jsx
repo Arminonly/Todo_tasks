@@ -13,18 +13,18 @@ const getHoverColors = (colors) =>
 const getActiveColors = (colors) =>
   colors.map((color) => new TinyColor(color).darken(5).toString());
 
-   
-
 function App() {
   const [text, setText] = useState('');
   const [todos, setTodos] = useState([]);
+
   const addNewTodo = (e) => {
     e.preventDefault();
     if (!text.trim()) return;
     const newTodo = {
       id: v4(),
       text,
-      completed: false
+      completed: false,
+      isEdit: false
     };
     setTodos([...todos, newTodo]);
     setText('');
@@ -34,12 +34,23 @@ function App() {
     const deleted = [...todos].filter((el) => el.id !== id);
     setTodos(deleted);
   };
-  const editTodo = (text, id) => {
-    const edit = [...todos].map((el) =>
-      el.id === id ? { ...el, text: text } : el
+  
+  const editTodo = (id) =>
+    setTodos((el) => (el.id === id ? { ...el, isEdit: !el.isEdit } : el));
+  const updateTodo = (text, id) =>
+    setTodos(
+      todos.map((el) =>
+        el.id === id && text.trim()
+          ? { ...el, text: text, isEdit: !el.isEdit }
+          : el
+      )
     );
-    setTodos(edit);
-  };
+  // const editTodo = (text, id) => {
+  //   const edit = [...todos].map((el) =>
+  //     el.id === id ? { ...el, text: text } : el
+  //   );
+  //   setTodos(edit);
+  // };
   const finishedTodo = (id) => {
     const completedTodo = [...todos];
     completedTodo.map((el) => {
@@ -75,7 +86,7 @@ function App() {
               finishedTodo={finishedTodo}
               todo={todo}
               text={text}
-             
+              updateTodo={updateTodo}
             />
           </div>
         ))
