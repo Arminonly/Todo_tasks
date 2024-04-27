@@ -4,6 +4,7 @@ import { v4 } from 'uuid';
 import './App.css';
 import { TaskCreatorForm } from './components/TaskCreatorForm';
 import { TodoList } from './components/TodoList';
+
 const colors1 = ['#6253E1', '#04BEFE'];
 const colors2 = ['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
 const colors3 = ['#40e495', '#30dd8a', '#2bb673'];
@@ -30,32 +31,23 @@ function App() {
     setText('');
     console.log(newTodo);
   };
+  
+  const updateTodo = (id, text) => {
+    const updated = [...todos].map((item) =>
+      item.id === id ? { ...item, isEdit: !item.isEdit, text: text } : item
+    );
+    setTodos(updated);
+    console.log(updated);
+  };
+
+
   const deleteTodo = (id) => {
     const deleted = [...todos].filter((el) => el.id !== id);
     setTodos(deleted);
   };
 
-  const editTodo = (id) => {
-    const edited = [...todos].map((item) =>
-      item.id === id ? { ...item, isEdit: !item.isEdit } : item
-    );
-    setTodos(edited);
-    console.log(edited);
-  };
 
-  const updateTodo = (id,text)=>{
-    const updated = [...todos].map(item=>item.id === id ?{...item, isEdit: !item.isEdit, text:text}:item)
-    setTodos(updated)
-    console.log(updated);
-    
-  }
 
-  // const editTodo = (text, id) => {
-  //   const edit = [...todos].map((el) =>
-  //     el.id === id ? { ...el, text: text } : el
-  //   );
-  //   setTodos(edit);
-  // };
   const finishedTodo = (id) => {
     const completedTodo = [...todos];
     completedTodo.map((el) => {
@@ -86,11 +78,10 @@ function App() {
               getHoverColors={getHoverColors}
               getActiveColors={getActiveColors}
               colors3={colors3}
-              deleteTodo={deleteTodo}
-              editTodo={editTodo}
-              finishedTodo={finishedTodo}
               todo={todo}
               text={text}
+              deleteTodo={deleteTodo}
+              finishedTodo={finishedTodo}
               updateTodo={updateTodo}
             />
           </div>
