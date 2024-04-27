@@ -29,15 +29,13 @@ function App() {
     };
     setTodos([...todos, newTodo]);
     setText('');
-    console.log(newTodo);
   };
-  
+
   const updateTodo = (id, text) => {
     const updated = [...todos].map((item) =>
       item.id === id ? { ...item, isEdit: !item.isEdit, text: text } : item
     );
     setTodos(updated);
-    console.log(updated);
   };
 
 
@@ -45,8 +43,6 @@ function App() {
     const deleted = [...todos].filter((el) => el.id !== id);
     setTodos(deleted);
   };
-
-
 
   const finishedTodo = (id) => {
     const completedTodo = [...todos];
