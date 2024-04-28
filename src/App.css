@@ -5,8 +5,9 @@
   text-align: center;
 }
 
-.finished{
+.finished {
   text-decoration: line-through;
-  color:rgb(216, 12, 12);
+  color: rgb(216, 12, 12);
   font-size: 17px;
+  transition: font-size 0.2s ease;
 }
