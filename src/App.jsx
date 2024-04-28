@@ -38,7 +38,6 @@ function App() {
     setTodos(updated);
   };
 
-
   const deleteTodo = (id) => {
     const deleted = [...todos].filter((el) => el.id !== id);
     setTodos(deleted);
