@@ -4,6 +4,7 @@ import { v4 } from 'uuid';
 import './App.css';
 import { TaskCreatorForm } from './components/TaskCreatorForm';
 import { TodoList } from './components/TodoList';
+import { RegistryPage } from './pages/registry/RegistryPage';
 
 const colors1 = ['#6253E1', '#04BEFE'];
 const colors2 = ['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
@@ -84,6 +85,8 @@ function App() {
       ) : (
         <h2> Список задач пуст</h2>
       )}
+      <hr/>
+     <RegistryPage/>
     </>
   );
 }
