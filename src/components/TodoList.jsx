@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Button, ConfigProvider, Input } from 'antd';
 import { FaEdit } from 'react-icons/fa';
 
-export const TodoList = ({
+
+ export const TodoList = ({
   todo,
   colors1,
   getHoverColors,
@@ -10,7 +11,8 @@ export const TodoList = ({
   colors3,
   finishedTodo, 
   deleteTodo,
-  updateTodo
+  updateTodo,
+ 
 }) => {
   
 const [updateText, setUpdateText] = useState(todo.text)

@@ -28,7 +28,7 @@ function App() {
       isEdit: false
     };
     setTodos([...todos, newTodo]);
-    setText('');
+      setText('');
   };
 
   const updateTodo = (id, text) => {

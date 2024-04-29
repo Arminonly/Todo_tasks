@@ -1,6 +1,5 @@
-import { withLogger } from "./withLogger";
-import { TodoList } from "../components/TodoList";
+import withLogger  from "./withLogger";
+import { TaskCreatorForm } from "../components/TaskCreatorForm";
 
-
- const TodListWithLogger = withLogger(TodoList)
+ const TodListWithLogger = withLogger(TaskCreatorForm)
 export default TodListWithLogger

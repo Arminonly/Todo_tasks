@@ -1,6 +1,7 @@
 import { Button, ConfigProvider, Input } from 'antd';
+import withLogger from '../HOC/withLogger';
 
-export const TaskCreatorForm = ({ text, setText, handleSubmit, colors2, getHoverColors, getActiveColors
+ const TaskCreatorForm = ({logAction, text, setText, handleSubmit, colors2, getHoverColors, getActiveColors
 }) => {
   return (
     <div style={{ marginBottom: 20 }}>
@@ -42,3 +43,4 @@ export const TaskCreatorForm = ({ text, setText, handleSubmit, colors2, getHover
     </div>
   );
 };
+export default withLogger(TaskCreatorForm)

@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
-import { TodoList } from '../components/TodoList';
+import { TaskCreatorForm } from '../components/TaskCreatorForm';
 
-export const withLogger = (TodoList) => {
-  return (props) => {
-    useEffect(() => {
-      console.log(`Component ${TodoList} mounted.`);
-    }, []);
-    return <TodoList {...props} />;
+ const withLogger = (TaskCreatorForm) => {
+  return class extends React.Component {
+    logAction = (action, payload) => {
+      console.log(`Action ${action}, Payload: `, payload);
+    };
+    render() {
+      return <TaskCreatorForm {...this.props} logAction={this.logAction} />;
+    }
   };
 };
+export default withLogger
