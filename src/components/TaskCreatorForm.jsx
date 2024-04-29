@@ -1,16 +1,12 @@
 import { Button, ConfigProvider, Input } from 'antd';
 
-export const TaskCreatorForm = ({
-  text,
-  setText,
-  handleSubmit,
-  colors2,
-  getHoverColors,
-  getActiveColors
+export const TaskCreatorForm = ({ text, setText, handleSubmit, colors2, getHoverColors, getActiveColors
 }) => {
   return (
     <div style={{ marginBottom: 20 }}>
-      <form onSubmit={handleSubmit}>
+      <form 
+      onSubmit={handleSubmit}
+      >
         <Input
           style={{ width: 300 }}
           value={text}

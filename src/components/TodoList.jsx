@@ -2,10 +2,18 @@ import { useState } from 'react';
 import { Button, ConfigProvider, Input } from 'antd';
 import { FaEdit } from 'react-icons/fa';
 
-export const TodoList = ({todo,colors1,getHoverColors,getActiveColors,colors3,finishedTodo, deleteTodo,updateTodo}) => {
- 
-const [updateText, setUpdateText] = useState(todo.text)
+export const TodoList = ({
+  todo,
+  colors1,
+  getHoverColors,
+  getActiveColors,
+  colors3,
+  finishedTodo, 
+  deleteTodo,
+  updateTodo
+}) => {
   
+const [updateText, setUpdateText] = useState(todo.text)
   return (
     <>
       {/* отметка о выполнении */}
@@ -34,6 +42,7 @@ const [updateText, setUpdateText] = useState(todo.text)
           done
         </Button>
       </ConfigProvider>
+      
       {
       todo.isEdit 
       ? <Input
