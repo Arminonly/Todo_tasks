@@ -1,41 +1,12 @@
 import { Container } from 'reactstrap';
-import { Button, Form, InputNumber, Typography } from 'antd';
+import { Form, Typography } from 'antd';
 import { UsernamePage } from './registryComponents/UsernamePage';
 import { EmailPage } from './registryComponents/EmailPage';
 import { PasswordPage } from './registryComponents/PasswordPage';
-
-
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24
-    },
-    sm: {
-      span: 8
-    }
-  },
-  wrapperCol: {
-    xs: {
-      span: 24
-    },
-    sm: {
-      span: 16
-    }
-  }
-};
-
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0
-    },
-    sm: {
-      span: 16,
-      offset: 8
-    }
-  }
-};
+import { GenderPage } from './registryComponents/GenderPage';
+import { AgePage } from './registryComponents/AgePage';
+import { formItemLayout } from '../../api/formApi';
+import { RegistryButton } from './registryComponents/RegistryButton';
 
 export const RegistryPage = () => {
   const onFinish = async (values) => {
@@ -67,13 +38,11 @@ export const RegistryPage = () => {
           <UsernamePage />
           <EmailPage />
           <PasswordPage />
-
-            <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit" block>
-              Register
-            </Button>
-          </Form.Item>
+          <GenderPage />
+          <AgePage />
+          <RegistryButton />
         </Form>
+        <Typography.Title level={4}>Already have an account?</Typography.Title>
       </Container>
     </>
   );

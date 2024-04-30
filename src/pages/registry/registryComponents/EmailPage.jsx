@@ -4,15 +4,15 @@ export const EmailPage = () => {
     return (
         <Form.Item
             name="email"
-            label="E-mail"
+            label="Почта"
             rules={[
               {
                 type: 'email',
-                message: 'The input is not valid E-mail!'
+                message: 'Введите правильный E-mail!'
               },
               {
                 required: true,
-                message: 'Please input your E-mail!'
+                message: 'Пожалуйста, укажите ваш E-mail!'
               }
             ]}
           >

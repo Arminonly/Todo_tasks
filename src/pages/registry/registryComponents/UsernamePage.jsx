@@ -4,12 +4,12 @@ export const UsernamePage = () => {
     return (
         <Form.Item
         name="username"
-        label="Username"
-        tooltip="What do you want others to call you?"
+        label="Ник"
+        tooltip="Укажите как к Вам можно обращаться?"
         rules={[
           {
             required: true,
-            message: 'Please input your username!',
+            message: 'Пожалуйста, укажите Ваш ник!',
             whitespace: true
           }
         ]}

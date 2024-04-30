@@ -5,11 +5,11 @@ export const PasswordPage = () => {
     return (
         <Form.Item
         name="password"
-        label="Password"
+        label="Пароль"
         rules={[
           {
             required: true,
-            message: 'Please input your password!'
+            message: 'Пожалуйста, введите пароль!'
           }
         ]}
         hasFeedback

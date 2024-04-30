@@ -4,11 +4,11 @@ export const AgePage = () => {
   return (
     <Form.Item
       name="age"
-      label="Age"
+      label="Возраст"
       rules={[
         {
           required: true,
-          message: 'Please select age!'
+          message: 'Укажите ваш возраст!'
         }
       ]}
     >
