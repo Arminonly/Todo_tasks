@@ -1,6 +1,9 @@
 import { Container } from 'reactstrap';
-import { Button, Form, Input, Select, InputNumber, Typography } from 'antd';
-const { Option } = Select;
+import { Button, Form, InputNumber, Typography } from 'antd';
+import { UsernamePage } from './registryComponents/UsernamePage';
+import { EmailPage } from './registryComponents/EmailPage';
+import { PasswordPage } from './registryComponents/PasswordPage';
+
 
 const formItemLayout = {
   labelCol: {
@@ -35,7 +38,6 @@ const tailFormItemLayout = {
 };
 
 export const RegistryPage = () => {
-  
   const onFinish = async (values) => {
     const url = 'https://todo-redev.herokuapp.com/api/users/register';
     const res = await fetch(url, {
@@ -62,83 +64,11 @@ export const RegistryPage = () => {
           }}
           scrollToFirstError
         >
-          <Form.Item
-            name="username"
-            label="Username"
-            tooltip="What do you want others to call you?"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your username!',
-                whitespace: true
-              }
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="email"
-            label="E-mail"
-            rules={[
-              {
-                type: 'email',
-                message: 'The input is not valid E-mail!'
-              },
-              {
-                required: true,
-                message: 'Please input your E-mail!'
-              }
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            label="Password"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your password!'
-              }
-            ]}
-            hasFeedback
-          >
-            <Input.Password />
-          </Form.Item>
-          <Form.Item
-            name="gender"
-            label="Gender"
-            rules={[
-              {
-                required: true,
-                message: 'Please select gender!'
-              }
-            ]}
-          >
-            <Select placeholder="select your gender">
-              <Option value="male">Male</Option>
-              <Option value="female">Female</Option>
-              <Option value="other">Other</Option>
-            </Select>
-          </Form.Item>
+          <UsernamePage />
+          <EmailPage />
+          <PasswordPage />
 
-          <Form.Item
-            name="age"
-            label="Age"
-            rules={[
-              {
-                required: true,
-                message: 'Please select age!'
-              }
-            ]}
-          >
-            <InputNumber
-              style={{
-                width: '100%'
-              }}
-            />
-          </Form.Item>
-          <Form.Item {...tailFormItemLayout}>
+            <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit" block>
               Register
             </Button>
