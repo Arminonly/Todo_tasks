@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-import { TodoList } from '../components/TodoList';
+import { TaskCreatorForm } from "../components/TaskCreatorForm";
 
-export const withLogger = (TodoList) => {
-  return (props) => {
-    useEffect(() => {
-      console.log(`Component ${TodoList} mounted.`);
-    }, []);
-    return <TodoList {...props} />;
+export const withLogger = TaskCreatorForm => {
+  return props => {
+    const logAction = (action, payload) => {
+      console.log(`Action: ${action}, Payload`, payload);
+    }
+    return <TaskCreatorForm {...props} logAction={logAction}  />
   };
 };

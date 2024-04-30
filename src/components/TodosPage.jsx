@@ -3,6 +3,7 @@ import { TinyColor } from '@ctrl/tinycolor';
 import { v4 } from 'uuid';
 import { TaskCreatorForm } from './TaskCreatorForm';
 import { TodoList } from './TodoList';
+import { withLogger } from '../HOC/withLogger';
 
 const colors1 = ['#6253E1', '#04BEFE'];
 const colors2 = ['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
@@ -13,6 +14,7 @@ const getHoverColors = (colors) =>
 const getActiveColors = (colors) =>
   colors.map((color) => new TinyColor(color).darken(5).toString());
 
+const TaskCreatorFormHOC = withLogger(TaskCreatorForm)
 export const TodosPage = () => {
   const [text, setText] = useState('');
   const [todos, setTodos] = useState([]);
@@ -54,7 +56,7 @@ export const TodosPage = () => {
   };
   return (
     <>
-      <TaskCreatorForm
+      <TaskCreatorFormHOC
         text={text}
         setText={setText}
         handleSubmit={addNewTodo}
