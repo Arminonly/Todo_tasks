@@ -35,15 +35,11 @@ import { Container } from 'reactstrap';
 // };
 
 export const RegistryPage = () => {
-
-
   return (
     <>
       <Container className="bg-light border" fluid>
         <h3>Страница регистрации</h3>
-    
       </Container>
     </>
   );
 };
- 
