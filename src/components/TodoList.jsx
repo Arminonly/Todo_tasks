@@ -12,8 +12,7 @@ import { FaEdit } from 'react-icons/fa';
   finishedTodo, 
   deleteTodo,
   updateTodo,
- 
-}) => {
+ }) => {
   
 const [updateText, setUpdateText] = useState(todo.text)
   return (

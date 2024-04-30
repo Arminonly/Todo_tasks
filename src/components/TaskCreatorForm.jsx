@@ -1,17 +1,27 @@
 import { Button, ConfigProvider, Input } from 'antd';
-import withLogger from '../HOC/withLogger';
+import { withLogger } from '../HOC/withLogger';
 
- const TaskCreatorForm = ({logAction, text, setText, handleSubmit, colors2, getHoverColors, getActiveColors
+
+export const TaskCreatorForm = ({ logAction, text,
+  setText,
+  handleSubmit,
+  colors2,
+  getHoverColors,
+  getActiveColors
 }) => {
+
+  const onHandleSubmit = e =>{
+    logAction('add task', text)
+    handleSubmit(e)
+  }
+ 
   return (
     <div style={{ marginBottom: 20 }}>
-      <form 
-      onSubmit={handleSubmit}
-      >
+      <form onSubmit={onHandleSubmit}>
         <Input
           style={{ width: 300 }}
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={e => setText(e.target.value)}
         />
 
         <ConfigProvider
@@ -43,4 +53,4 @@ import withLogger from '../HOC/withLogger';
     </div>
   );
 };
-export default withLogger(TaskCreatorForm)
+

@@ -4,6 +4,7 @@ import { v4 } from 'uuid';
 import './App.css';
 import { TaskCreatorForm } from './components/TaskCreatorForm';
 import { TodoList } from './components/TodoList';
+import { withLogger } from './HOC/withLogger';
 
 const colors1 = ['#6253E1', '#04BEFE'];
 const colors2 = ['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
@@ -13,6 +14,7 @@ const getHoverColors = (colors) =>
   colors.map((color) => new TinyColor(color).lighten(5).toString());
 const getActiveColors = (colors) =>
   colors.map((color) => new TinyColor(color).darken(5).toString());
+const TaskCreatorFormHOC = withLogger(TaskCreatorForm)
 
 function App() {
   const [text, setText] = useState('');
@@ -56,7 +58,7 @@ function App() {
 
   return (
     <>
-      <TaskCreatorForm
+      <TaskCreatorFormHOC
         text={text}
         setText={setText}
         handleSubmit={addNewTodo}
