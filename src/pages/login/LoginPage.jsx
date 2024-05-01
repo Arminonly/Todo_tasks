@@ -5,7 +5,7 @@ export const LoginPage = () => {
   const onFinish = async values => {
     const url = 'https://todo-redev.herokuapp.com/api/auth/login';
     const res = await fetch(url, {
-        method: 'POST',
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
     });
@@ -26,15 +26,15 @@ export const LoginPage = () => {
       >
         <Form.Item
           name="email"
-          label="E-mail"
+          label="Почта"
           rules={[
             {
               type: 'email',
-              message: 'The input is not valid E-mail!'
+              message: 'Введите правильный E-mail!'
             },
             {
               required: true,
-              message: 'Please input your E-mail!'
+              message: 'Пожалуйста, укажите ваш E-mail!'
             }
           ]}
         >
@@ -42,11 +42,11 @@ export const LoginPage = () => {
         </Form.Item>
         <Form.Item
           name="password"
-          label="Password"
+          label="Пароль"
           rules={[
             {
               required: true,
-              message: 'Please input your password!'
+              message: 'Пожалуйста, введите пароль!'
             }
           ]}
           hasFeedback
