@@ -1,8 +1,11 @@
 import { Container } from 'reactstrap';
-import { Button, Typography, Form, Input } from 'antd';
+import { Typography, Form} from 'antd';
+import { EmailPage } from './loginComponents/EmailPage';
+import { PasswordPage } from './loginComponents/PasswordPage';
+import { LoginBtn } from './loginComponents/LoginBtn';
 
 export const LoginPage = () => {
-  const onFinish = async values => {
+  const onFinish = async (values) => {
     const url = 'https://todo-redev.herokuapp.com/api/auth/login';
     const res = await fetch(url, {
       method: 'POST',
@@ -24,44 +27,9 @@ export const LoginPage = () => {
         }}
         onFinish={onFinish}
       >
-        <Form.Item
-          name="email"
-          label="Почта"
-          rules={[
-            {
-              type: 'email',
-              message: 'Введите правильный E-mail!'
-            },
-            {
-              required: true,
-              message: 'Пожалуйста, укажите ваш E-mail!'
-            }
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="password"
-          label="Пароль"
-          rules={[
-            {
-              required: true,
-              message: 'Пожалуйста, введите пароль!'
-            }
-          ]}
-          hasFeedback
-        >
-          <Input.Password />
-        </Form.Item>
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
-            Log in
-          </Button>
-        </Form.Item>
+        <EmailPage />
+        <PasswordPage />
+        <LoginBtn />
         <Typography.Title level={4}>
           Don't have an account? Sign Up{' '}
         </Typography.Title>
