@@ -16,7 +16,6 @@ export const RegistryPage = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
     });
-
     const data = await res.json();
     console.log('Received values of form: ', data);
   };
@@ -42,7 +41,7 @@ export const RegistryPage = () => {
           <AgePage />
           <RegistryButton />
         </Form>
-        <Typography.Title level={4}>Already have an account?</Typography.Title>
+        <Typography.Title level={4}>Already have an account? Log In</Typography.Title>
       </Container>
     </>
   );
