@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<RegistryPage />} />
      
-        <Route path="/1" element={<TodosPage />} />
+        <Route path="/todos" element={<TodosPage />} />
         <Route path="/2" element={ <LoginPage />} />
         <Route path="*" element={ <NotfoundPage/>} />
       </Routes>

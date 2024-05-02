@@ -1,11 +1,12 @@
 import { Container } from 'reactstrap';
-import { Link } from "react-router-dom";
-import { Typography, Form} from 'antd';
+import { Link,useNavigate } from "react-router-dom";
+import { Typography, Form, message} from 'antd';
 import { EmailPage } from './loginComponents/EmailPage';
 import { PasswordPage } from './loginComponents/PasswordPage';
 import { LoginBtn } from './loginComponents/LoginBtn';
 
 export const LoginPage = () => {
+  const navigate = useNavigate() 
   const onFinish = async (values) => {
     const url = 'https://todo-redev.herokuapp.com/api/auth/login';
     const res = await fetch(url, {
@@ -14,6 +15,18 @@ export const LoginPage = () => {
       body: JSON.stringify(values)
     });
     const data = await res.json();
+    let token = data.token
+    if (!token) {
+      setTimeout(() => {
+        message.error(
+           'Что то пошло не так((( Проверьте правильность Вашего email. Попытайтесь снова)))',
+        5
+        )
+      }, 800);
+    }else{
+        navigate('/todos')
+      
+    }
 
     console.log('Received values of data: ', data);
   };
