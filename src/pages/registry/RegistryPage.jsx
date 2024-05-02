@@ -1,5 +1,5 @@
 import { Container } from 'reactstrap';
-import { Form, Typography } from 'antd';
+import { Form, Typography, message } from 'antd';
 import { UsernamePage } from './registryComponents/UsernamePage';
 import { EmailPage } from './registryComponents/EmailPage';
 import { PasswordPage } from './registryComponents/PasswordPage';
@@ -18,6 +18,21 @@ export const RegistryPage = () => {
       body: JSON.stringify(values)
     });
     const data = await res.json();
+  if (!data.id) {
+    setTimeout(() => {
+      message.error(
+        'Что то пошло не так((( Возможно такое имя или email уже существуют. Попытайтесь снова)))',
+        5
+      )
+    }, 800);
+  } else {
+    setTimeout(() => {
+      message.success(
+        'Регистрация прошла успешно!!! Пожалуйста, перейдите на страницу авторизации (нажмите Log In)',
+        5
+      )
+    }, 800);
+  }
     console.log('Received values of form: ', data);
   };
   const [form] = Form.useForm();
