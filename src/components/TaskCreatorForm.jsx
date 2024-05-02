@@ -1,26 +1,52 @@
 import { Button, ConfigProvider, Input, Typography } from 'antd';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { v4 } from 'uuid';
+import { setText, setTodos } from '../store/actions';
 
-export const TaskCreatorForm = ({logAction, text, setText, handleSubmit, colors2, getHoverColors, getActiveColors
+export const TaskCreatorForm = ({
+  logAction,
+  // text,
+  // setText,
+  // handleSubmit,
+  colors2,
+  getHoverColors,
+  getActiveColors
 }) => {
+  const dispatch = useDispatch();
+  const text = useSelector(state => state.todoListReducer.text);
+  const todos = useSelector(state => state.todoListReducer.todos);
 
-const onHandleSubmit = e =>{
-  logAction('add text', text)
-  handleSubmit(e)
-}
+  const addNewTodo = e => {
+    e.preventDefault();
+    if (!text.trim()) return;
+    const newTodo = {
+      id: v4(),
+      text,
+      completed: false,
+      isEdit: false
+    };
+    dispatch(setTodos([...todos, newTodo]));
+    dispatch(setText(''));
+    console.log(newTodo);
+  };
+
+  const onHandleSubmit = e => {
+    logAction('add text', text);
+   addNewTodo(e)
+  };
 
   return (
     <div style={{ marginBottom: 20 }}>
-      <Typography.Title level={4}><Link to='/' > Log Out</Link></Typography.Title>
+      <Typography.Title level={4}>
+        <Link to="/"> Log Out</Link>
+      </Typography.Title>
 
-      <form 
-      onSubmit={onHandleSubmit}
-
-      >
+      <form onSubmit={onHandleSubmit}>
         <Input
           style={{ width: 300 }}
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={e => dispatch(setText(e.target.value))}
         />
 
         <ConfigProvider
