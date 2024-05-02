@@ -1,13 +1,16 @@
+import { useState } from 'react';
+
 import { Container } from 'reactstrap';
-import { Link,useNavigate } from "react-router-dom";
-import { Typography, Form, message} from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
+import { Typography, Form, message, Flex, Spin } from 'antd';
 import { EmailPage } from './loginComponents/EmailPage';
 import { PasswordPage } from './loginComponents/PasswordPage';
 import { LoginBtn } from './loginComponents/LoginBtn';
 
 export const LoginPage = () => {
-  const navigate = useNavigate() 
-  const onFinish = async (values) => {
+  const [spinLoading, setSpinLoading] = useState(false);
+  const navigate = useNavigate();
+  const onFinish = async values => {
     const url = 'https://todo-redev.herokuapp.com/api/auth/login';
     const res = await fetch(url, {
       method: 'POST',
@@ -15,17 +18,16 @@ export const LoginPage = () => {
       body: JSON.stringify(values)
     });
     const data = await res.json();
-    let token = data.token
+    let token = data.token;
     if (!token) {
       setTimeout(() => {
         message.error(
-           'Что то пошло не так((( Проверьте правильность Вашего email. Попытайтесь снова)))',
-        5
-        )
+          'Что то пошло не так((( Проверьте правильность Вашего email. Попытайтесь снова)))',
+          5
+        );
       }, 800);
-    }else{
-        navigate('/todos')
-      
+    } else {
+      navigate('/todos');
     }
 
     console.log('Received values of data: ', data);
@@ -45,7 +47,7 @@ export const LoginPage = () => {
         <PasswordPage />
         <LoginBtn />
         <Typography.Title level={4}>
-          Don't have an account? <Link to={'/'}> Sign Up{' '}</Link>
+          Don't have an account? <Link to={'/'}> Sign Up </Link>
         </Typography.Title>
       </Form>
     </Container>
