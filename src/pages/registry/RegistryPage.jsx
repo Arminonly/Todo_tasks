@@ -33,7 +33,6 @@ export const RegistryPage = () => {
       )
     }, 800);
   }
-    console.log('Received values of form: ', data);
   };
   const [form] = Form.useForm();
   return (
@@ -57,7 +56,7 @@ export const RegistryPage = () => {
           <AgePage />
           <RegistryButton />
         </Form>
-        <Typography.Title level={4}>Already have an account? <Link to='/2' > Log In</Link></Typography.Title>
+        <Typography.Title level={4}>Already have an account? <Link to='/' > Log In</Link></Typography.Title>
       </Container>
     </>
   );

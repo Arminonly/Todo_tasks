@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, ConfigProvider, Input } from 'antd';
+import { Button, ConfigProvider, Input} from 'antd';
 import { FaEdit } from 'react-icons/fa';
 
 export const TodoList = ({
@@ -90,6 +90,7 @@ const [updateText, setUpdateText] = useState(todo.text)
         >
           delete
         </Button>
+        
       </ConfigProvider>
     </>
   );

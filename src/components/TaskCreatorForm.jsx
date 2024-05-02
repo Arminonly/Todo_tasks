@@ -1,4 +1,5 @@
-import { Button, ConfigProvider, Input } from 'antd';
+import { Button, ConfigProvider, Input, Typography } from 'antd';
+import { Link } from 'react-router-dom';
 
 export const TaskCreatorForm = ({logAction, text, setText, handleSubmit, colors2, getHoverColors, getActiveColors
 }) => {
@@ -10,6 +11,8 @@ const onHandleSubmit = e =>{
 
   return (
     <div style={{ marginBottom: 20 }}>
+      <Typography.Title level={4}><Link to='/' > Log Out</Link></Typography.Title>
+
       <form 
       onSubmit={onHandleSubmit}
 

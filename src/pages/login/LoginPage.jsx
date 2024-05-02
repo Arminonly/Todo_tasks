@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { Container } from 'reactstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { Typography, Form, message, Flex, Spin } from 'antd';
@@ -8,9 +6,8 @@ import { PasswordPage } from './loginComponents/PasswordPage';
 import { LoginBtn } from './loginComponents/LoginBtn';
 
 export const LoginPage = () => {
-  const [spinLoading, setSpinLoading] = useState(false);
   const navigate = useNavigate();
-  const onFinish = async values => {
+  const onFinish = async (values) => {
     const url = 'https://todo-redev.herokuapp.com/api/auth/login';
     const res = await fetch(url, {
       method: 'POST',
@@ -29,8 +26,6 @@ export const LoginPage = () => {
     } else {
       navigate('/todos');
     }
-
-    console.log('Received values of data: ', data);
   };
   return (
     <Container className="bg-light border" fluid>
@@ -47,7 +42,7 @@ export const LoginPage = () => {
         <PasswordPage />
         <LoginBtn />
         <Typography.Title level={4}>
-          Don't have an account? <Link to={'/'}> Sign Up </Link>
+          Don't have an account? <Link to={'/reg'}> Sign Up </Link>
         </Typography.Title>
       </Form>
     </Container>

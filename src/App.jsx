@@ -9,13 +9,12 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<RegistryPage />} />
-     
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/reg" element={<RegistryPage />} />
         <Route path="/todos" element={<TodosPage />} />
-        <Route path="/2" element={ <LoginPage />} />
-        <Route path="*" element={ <NotfoundPage/>} />
+        <Route path="*" element={<NotfoundPage />} />
       </Routes>
-      <hr />
+    
     </>
   );
 }
