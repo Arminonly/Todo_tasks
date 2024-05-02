@@ -1,4 +1,5 @@
 import { Container } from 'reactstrap';
+import { Link } from "react-router-dom";
 import { Typography, Form} from 'antd';
 import { EmailPage } from './loginComponents/EmailPage';
 import { PasswordPage } from './loginComponents/PasswordPage';
@@ -31,7 +32,7 @@ export const LoginPage = () => {
         <PasswordPage />
         <LoginBtn />
         <Typography.Title level={4}>
-          Don't have an account? Sign Up{' '}
+          Don't have an account? <Link to={'/'}> Sign Up{' '}</Link>
         </Typography.Title>
       </Form>
     </Container>

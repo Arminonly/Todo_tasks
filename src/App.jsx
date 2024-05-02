@@ -3,6 +3,7 @@ import './App.css';
 import { RegistryPage } from './pages/registry/RegistryPage';
 import { TodosPage } from './components/TodosPage';
 import { LoginPage } from './pages/login/LoginPage';
+import { NotfoundPage } from './pages/NotfoundPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
      
         <Route path="/1" element={<TodosPage />} />
         <Route path="/2" element={ <LoginPage />} />
+        <Route path="*" element={ <NotfoundPage/>} />
       </Routes>
       <hr />
     </>

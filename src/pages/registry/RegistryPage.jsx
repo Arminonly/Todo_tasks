@@ -7,6 +7,7 @@ import { GenderPage } from './registryComponents/GenderPage';
 import { AgePage } from './registryComponents/AgePage';
 import { formItemLayout } from '../../api/formApi';
 import { RegistryButton } from './registryComponents/RegistryButton';
+import { Link } from 'react-router-dom';
 
 export const RegistryPage = () => {
   const onFinish = async (values) => {
@@ -41,7 +42,7 @@ export const RegistryPage = () => {
           <AgePage />
           <RegistryButton />
         </Form>
-        <Typography.Title level={4}>Already have an account? Log In</Typography.Title>
+        <Typography.Title level={4}>Already have an account? <Link to='/2' > Log In</Link></Typography.Title>
       </Container>
     </>
   );
