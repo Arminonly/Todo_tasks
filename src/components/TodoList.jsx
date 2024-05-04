@@ -1,19 +1,37 @@
 import { useState } from 'react';
-import { Button, ConfigProvider, Input} from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, ConfigProvider, Input } from 'antd';
 import { FaEdit } from 'react-icons/fa';
+import { setTodos } from '../store/actions';
 
-export const TodoList = ({
-  todo,
-  colors1,
-  getHoverColors,
-  getActiveColors,
-  colors3,
-  finishedTodo, 
-  deleteTodo,
-  updateTodo
-}) => {
-  
-const [updateText, setUpdateText] = useState(todo.text)
+export const TodoList = ({todo, colors1, getHoverColors, getActiveColors, colors3}) => {
+  const dispatch = useDispatch();
+  const { todos } = useSelector((state) => state.todoListReducer);
+  const [updateText, setUpdateText] = useState(todo.text);
+
+  const updateTodo = (id, text) => {
+    const updated = [...todos].map((item) =>
+      item.id === id ? { ...item, isEdit: !item.isEdit, text: text } : item
+    );
+    dispatch(setTodos(updated));
+  };
+
+  const deleteTodo = (id) => {
+    const deleted = [...todos].filter((el) => el.id !== id);
+    dispatch(setTodos(deleted));
+  };
+
+  const finishedTodo = (id) => {
+    const completedTodo = [...todos];
+    completedTodo.map((el) => {
+      if (el.id === id) {
+        el.completed = !el.completed;
+      }
+      return el;
+    });
+    dispatch(setTodos(completedTodo));
+  };
+
   return (
     <>
       {/* отметка о выполнении */}
@@ -42,27 +60,27 @@ const [updateText, setUpdateText] = useState(todo.text)
           done
         </Button>
       </ConfigProvider>
-      
-      {
-      todo.isEdit 
-      ? <Input
-        style={{ width: 250 }}
-        className={todo.completed ? 'finished' : ''}
-        value={updateText}
-        onChange={e=>setUpdateText(e.target.value)}
-       />
-      : <Input
-        style={{ width: 250 }}
-        className={todo.completed ? 'finished' : ''}
-        value={updateText}
-       />
-       
-      }
+
+      {todo.isEdit ? (
+        <Input
+          style={{ width: 250 }}
+          className={todo.completed ? 'finished' : ''}
+          value={updateText}
+          onChange={(e) => setUpdateText(e.target.value)}
+        />
+      ) : (
+        <Input
+          style={{ width: 250 }}
+          className={todo.completed ? 'finished' : ''}
+          value={updateText}
+        />
+      )}
       {/* редактировать таск */}
       <span>
-        <FaEdit 
-            onClick={()=>updateTodo(todo.id, updateText)}
-        style={{ margin: '0px 10px', cursor: 'pointer' }} />
+        <FaEdit
+          onClick={() => updateTodo(todo.id, updateText)}
+          style={{ margin: '0px 10px', cursor: 'pointer' }}
+        />
       </span>
 
       {/* удалить таск */}
@@ -90,7 +108,6 @@ const [updateText, setUpdateText] = useState(todo.text)
         >
           delete
         </Button>
-        
       </ConfigProvider>
     </>
   );

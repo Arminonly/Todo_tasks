@@ -4,18 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 } from 'uuid';
 import { setText, setTodos } from '../store/actions';
 
-export const TaskCreatorForm = ({
-  logAction,
-  // text,
-  // setText,
-  // handleSubmit,
-  colors2,
-  getHoverColors,
-  getActiveColors
-}) => {
+export const TaskCreatorForm = ({logAction, colors2, getHoverColors, getActiveColors}) => {
   const dispatch = useDispatch();
-  const text = useSelector(state => state.todoListReducer.text);
-  const todos = useSelector(state => state.todoListReducer.todos);
+  const {text,todos} = useSelector(state => state.todoListReducer);
 
   const addNewTodo = e => {
     e.preventDefault();
@@ -28,7 +19,6 @@ export const TaskCreatorForm = ({
     };
     dispatch(setTodos([...todos, newTodo]));
     dispatch(setText(''));
-    console.log(newTodo);
   };
 
   const onHandleSubmit = e => {
