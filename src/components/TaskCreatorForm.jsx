@@ -1,7 +1,7 @@
 import { Button, ConfigProvider, Input, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { v4 } from 'uuid';
+import { useDispatch, useSelector } from 'react-redux';
 import { setText,setTodos } from '../store/todoSlice';
 
 export const TaskCreatorForm = ({logAction, colors2, getHoverColors, getActiveColors}) => {
@@ -23,7 +23,7 @@ export const TaskCreatorForm = ({logAction, colors2, getHoverColors, getActiveCo
 
   const onHandleSubmit = e => {
     logAction('add text', text);
-   addNewTodo(e)
+    addNewTodo(e)
   };
 
   return (
@@ -36,9 +36,8 @@ export const TaskCreatorForm = ({logAction, colors2, getHoverColors, getActiveCo
         <Input
           style={{ width: 300 }}
           value={text}
-          onChange={e => dispatch(setText(e.target.value))}
+          onChange={e => dispatch(setText(e.target.value))}  
         />
-
         <ConfigProvider
           theme={{
             components: {

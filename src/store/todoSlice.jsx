@@ -18,6 +18,5 @@ export const todoReducer = createSlice({
   }
 });
 
-export const {setText, setTodos} = todoReducer.actions
-
-export default todoReducer.reducer
+export const { setText, setTodos } = todoReducer.actions;
+export default todoReducer.reducer;

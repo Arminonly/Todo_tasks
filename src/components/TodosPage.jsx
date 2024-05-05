@@ -25,7 +25,9 @@ export const TodosPage = () => {
         getActiveColors={getActiveColors}
       />
       {todos && todos.length ? (
+        
         todos.map((todo) => (
+          
           <div key={todo.id} style={{ marginBottom: 15 }}>
             <TodoList
               colors1={colors1}

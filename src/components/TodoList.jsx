@@ -60,7 +60,6 @@ export const TodoList = ({todo, colors1, getHoverColors, getActiveColors, colors
           done
         </Button>
       </ConfigProvider>
-
       {todo.isEdit ? (
         <Input
           style={{ width: 250 }}
@@ -82,7 +81,6 @@ export const TodoList = ({todo, colors1, getHoverColors, getActiveColors, colors
           style={{ margin: '0px 10px', cursor: 'pointer' }}
         />
       </span>
-
       {/* удалить таск */}
       <ConfigProvider
         theme={{
