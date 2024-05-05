@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ConfigProvider, Input } from 'antd';
 import { FaEdit } from 'react-icons/fa';
-import { setTodos } from '../store/actions';
+import { setTodos } from '../store/todoSlice';
 
 export const TodoList = ({todo, colors1, getHoverColors, getActiveColors, colors3}) => {
   const dispatch = useDispatch();

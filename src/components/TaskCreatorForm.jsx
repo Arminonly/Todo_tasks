@@ -2,7 +2,7 @@ import { Button, ConfigProvider, Input, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 } from 'uuid';
-import { setText, setTodos } from '../store/actions';
+import { setText,setTodos } from '../store/todoSlice';
 
 export const TaskCreatorForm = ({logAction, colors2, getHoverColors, getActiveColors}) => {
   const dispatch = useDispatch();
