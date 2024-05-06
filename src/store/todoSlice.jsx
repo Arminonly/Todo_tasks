@@ -14,9 +14,13 @@ export const todoReducer = createSlice({
     },
     setTodos: (state, action) => {
       state.todos = action.payload;
+    },
+    finishedTodo: (state, action) => {
+      const done = state.todos.find(todo => todo.id === action.payload.id);
+      done.completed = !done.completed;
     }
   }
 });
 
-export const { setText, setTodos } = todoReducer.actions;
+export const { setText, setTodos, finishedTodo } = todoReducer.actions;
 export default todoReducer.reducer;

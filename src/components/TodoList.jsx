@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ConfigProvider, Input } from 'antd';
 import { FaEdit } from 'react-icons/fa';
-import { setTodos } from '../store/todoSlice';
+import { setTodos,finishedTodo } from '../store/todoSlice';
 
 export const TodoList = ({todo, colors1, getHoverColors, getActiveColors, colors3}) => {
   const dispatch = useDispatch();
@@ -21,16 +21,20 @@ export const TodoList = ({todo, colors1, getHoverColors, getActiveColors, colors
     dispatch(setTodos(deleted));
   };
 
-  const finishedTodo = (id) => {
-    const completedTodo = [...todos];
-    completedTodo.map((el) => {
-      if (el.id === id) {
-        el.completed = !el.completed;
-      }
-      return el;
-    });
-    dispatch(setTodos(completedTodo));
-  };
+
+
+  // const finishedTodo = (id) => {
+  //   const completedTodo = [...todos];
+
+  //   completedTodo.map(el=>el.id === id ? {...el, completed: !el.completed } : el)
+  //   // completedTodo.map((el) => {
+  //   //   if (el.id === id) {
+  //   //     el.completed = !el.completed;
+  //   //   }
+  //   //   return el;
+  //   // });
+  //   dispatch(setTodos(completedTodo));
+  // };
 
   return (
     <>
@@ -52,7 +56,7 @@ export const TodoList = ({todo, colors1, getHoverColors, getActiveColors, colors
         }}
       >
         <Button
-          onClick={() => finishedTodo(todo.id)}
+          onClick={() => dispatch(finishedTodo(todo.id))}
           style={{ marginRight: 15 }}
           type="primary"
           size="large"
