@@ -16,6 +16,7 @@ export const LoginPage = () => {
     });
     const data = await res.json();
     let token = data.token;
+    localStorage.setItem('todoToken',token)
     if (!token) {
       setTimeout(() => {
         message.error(
