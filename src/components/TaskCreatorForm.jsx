@@ -1,12 +1,18 @@
 import { Button, ConfigProvider, Input, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
-import { setText,setTodos } from '../store/todoSlice';
+import { setText, setTodos } from '../store/todoSlice';
 
-export const TaskCreatorForm = ({logAction, colors2, getHoverColors, getActiveColors}) => {
+export const TaskCreatorForm = ({
+  logAction,
+  colors2,
+  getHoverColors,
+  getActiveColors
+}) => {
   const dispatch = useDispatch();
-  const {text,todos} = useSelector(state => state.todoListReducer);
+  const navigate = useNavigate();
+  const { text, todos } = useSelector(state => state.todoListReducer);
 
   const addNewTodo = e => {
     e.preventDefault();
@@ -23,20 +29,25 @@ export const TaskCreatorForm = ({logAction, colors2, getHoverColors, getActiveCo
 
   const onHandleSubmit = e => {
     logAction('add text', text);
-    addNewTodo(e)
+    addNewTodo(e);
+  };
+
+  const goHome = () => {
+    navigate('/');
+    localStorage.clear();
   };
 
   return (
     <div style={{ marginBottom: 20 }}>
       <Typography.Title level={4}>
-        <Link to="/"> Log Out</Link>
+        <Button type='primary' onClick={goHome}> Log Out</Button>
       </Typography.Title>
 
       <form onSubmit={onHandleSubmit}>
         <Input
           style={{ width: 300 }}
           value={text}
-          onChange={e => dispatch(setText(e.target.value))}  
+          onChange={e => dispatch(setText(e.target.value))}
         />
         <ConfigProvider
           theme={{
