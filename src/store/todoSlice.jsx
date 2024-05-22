@@ -16,7 +16,7 @@ export const todoReducer = createSlice({
       state.todos = action.payload;
     },
     finishedTodo: (state, action) => {
-      const done = state.todos.find(todo => todo.id === action.payload.id);
+      const done = state.todos.find(todo => todo.id === action.payload);
       done.completed = !done.completed;
     }
   }
