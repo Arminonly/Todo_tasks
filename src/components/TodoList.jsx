@@ -21,21 +21,6 @@ export const TodoList = ({todo, colors1, getHoverColors, getActiveColors, colors
     dispatch(setTodos(deleted));
   };
 
-
-
-  // const finishedTodo = (id) => {
-  //   const completedTodo = [...todos];
-
-  //   completedTodo.map(el=>el.id === id ? {...el, completed: !el.completed } : el)
-  //   // completedTodo.map((el) => {
-  //   //   if (el.id === id) {
-  //   //     el.completed = !el.completed;
-  //   //   }
-  //   //   return el;
-  //   // });
-  //   dispatch(setTodos(completedTodo));
-  // };
-
   return (
     <>
       {/* отметка о выполнении */}
